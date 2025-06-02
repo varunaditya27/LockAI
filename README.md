@@ -177,10 +177,10 @@ This project is released under the MIT License.
 
 ## 🤝 Contributors
 
-* Varun Aditya ([@yourgithub](https://github.com/yourgithub))
-* \[Team Member 2]
-* \[Team Member 3]
-* \[Team Member 4]
+* Varun Aditya
+* Abhijay M. S.
+* Shreyas Nayan Kamat
+* Vaibhav V. S.
 
 ---
 
