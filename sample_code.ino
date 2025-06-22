@@ -1,8 +1,8 @@
-// LockAI - main.ino
+// LockAI - main.ino (ESP32-compatible)
 // Author: Varun Aditya & Team
-// Description: ESP32-based knock + touch authentication with Firebase and Blynk
+// Description: ESP32-based knock + touch authentication with Firebase and Blynk (using ESP32Servo)
 
-#include <Servo.h>
+#include <ESP32Servo.h>
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
 #include <BlynkSimpleEsp32.h>
@@ -82,6 +82,7 @@ void setup() {
   digitalWrite(buzzerPin, LOW);
   digitalWrite(ledPin, LOW);
 
+  lockServo.setPeriodHertz(50);  // 50 Hz for typical servo
   lockServo.attach(servoPin);
   lockServo.write(0);
 
