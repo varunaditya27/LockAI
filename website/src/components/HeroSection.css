@@ -1,0 +1,102 @@
+.hero-section-outer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 90vh;
+  padding: 3rem 0 2rem 0;
+  background: none;
+}
+
+.hero-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 3rem 2rem 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 32px 0 rgba(67, 206, 162, 0.13);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  width: 100%;
+  padding: 4rem 2rem 3rem 2rem;
+  box-sizing: border-box;
+  background: none;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, rgba(15,32,39,0.7) 0%, rgba(44,83,100,0.7) 100%),
+    url('https://images.pexels.com/photos/279810/pexels-photo-279810.jpeg?auto=compress&w=1200&q=80') center/cover no-repeat;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-avatar {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(67, 206, 162, 0.18);
+}
+
+.hero-title {
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 2px 12px #185a9d33, 0 0 8px #43cea244;
+}
+
+.hero-subtitle {
+  font-weight: 500;
+  color: #eaf6fb;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px #185a9d33;
+}
+
+.hero-desc {
+  margin-top: 1.5rem;
+  max-width: 600px;
+  color: #eaf6fb;
+  font-size: 1.1rem;
+  text-align: center;
+  text-shadow: 0 2px 8px #185a9d33;
+}
+
+.hero-how {
+  margin-top: 1.2rem;
+  color: #43cea2;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .hero-card {
+    padding: 2rem 0.5rem 2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .hero-section-outer {
+    padding: 1.5rem 0 1.5rem 0;
+  }
+  .hero-section {
+    padding: 2rem 0.5rem 2rem 0.5rem;
+    min-height: 40vh;
+  }
+} 

@@ -1,0 +1,29 @@
+.future-section-outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  background: none;
+}
+
+.future-list {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  text-align: left;
+  color: #eaf6fb;
+}
+
+.future-list .MuiListItem-root {
+  margin-bottom: 1rem;
+  color: #eaf6fb;
+}
+
+@media (max-width: 700px) {
+  .future-section-outer {
+    padding: 1.5rem 0.5rem 1.5rem 0.5rem;
+    max-width: 98vw;
+  }
+} 
