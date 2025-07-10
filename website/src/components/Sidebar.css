@@ -1,0 +1,110 @@
+.sidebar-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(24,28,36,0.92) 0%, rgba(24,28,36,0.82) 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 24px 2px #43cea244;
+  backdrop-filter: blur(22px);
+  border-right: 2.5px solid #43cea2cc;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.sidebar-logo {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #43cea2;
+  letter-spacing: 0.08em;
+  margin-left: 2.2rem;
+  margin-bottom: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: 0 0 18px #43cea2, 0 0 32px #43cea2cc, 0 2px 8px #185a9d44;
+  animation: logoGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% { text-shadow: 0 0 18px #43cea2, 0 0 32px #43cea2cc, 0 2px 8px #185a9d44; }
+  100% { text-shadow: 0 0 32px #43cea2, 0 0 48px #43cea2cc, 0 2px 16px #185a9d88; }
+}
+
+.sidebar-list {
+  width: 100%;
+  padding: 0;
+  position: relative;
+}
+
+.sidebar-item {
+  border-radius: 12px 0 0 12px;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.7rem 1.5rem 0.7rem 2.2rem;
+  color: #b0c4d4;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+  position: relative;
+  z-index: 3;
+}
+
+.sidebar-item .sidebar-icon {
+  color: #b0c4d4;
+}
+
+.sidebar-item.active, .sidebar-item:hover {
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+  box-shadow: 0 2px 16px 0 #43cea244, 0 0 8px #43cea2cc;
+  transform: scale(1.04) translateX(2px);
+}
+
+.sidebar-item.active .sidebar-icon, .sidebar-item:hover .sidebar-icon {
+  color: #fff;
+}
+
+.sidebar-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.sidebar-mobile-btn {
+  display: none !important;
+  position: fixed !important;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 1200;
+  background: rgba(24, 28, 36, 0.85);
+  color: #43cea2;
+  box-shadow: 0 2px 8px #185a9d44;
+}
+
+@media (max-width: 900px) {
+  .sidebar-root {
+    display: none;
+  }
+  .sidebar-mobile-btn {
+    display: block !important;
+  }
+  .MuiDrawer-root {
+    background: rgba(10, 16, 24, 0.7);
+  }
+}
+
+.sidebar-mobile-drawer .sidebar-root.sidebar-mobile {
+  width: 220px;
+  min-width: 220px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+} 
