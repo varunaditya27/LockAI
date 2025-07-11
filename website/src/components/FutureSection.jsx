@@ -3,20 +3,26 @@ import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
 import "./FutureSection.css";
 
 const future = [
-  "Replace manual touches with knock detection via onboard ML",
-  "Add access logs via Firebase or SD card",
-  "Support for biometric or NFC unlock",
-  "OTA firmware updates"
+  "Transition to PCB for reliability and commercial viability",
+  "Integrate additional sensors (e.g., accelerometers, pressure sensors)",
+  "Implement advanced power management for longer battery life",
+  "Develop ruggedized enclosures for harsh environments",
+  "Add tamper detection and secure element chips",
+  "Enable multi-user support and continual learning",
+  "Integrate explainable AI and advanced attack detection",
+  "Support over-the-air model updates and remote configuration",
+  "Develop mobile apps for user management and monitoring",
+  "Implement advanced cryptographic techniques for privacy"
 ];
 
 export default function FutureSection({ id = "future" }) {
   return (
     <Box id={id} className="future-section-outer section">
       <Typography variant="h4" fontWeight={700} color="primary" gutterBottom align="center">
-        Future Improvements
+        Future Work & Enhancements
       </Typography>
       <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 2 }}>
-        Planned upgrades to make LockAI even smarter and more secure.
+        Planned improvements to advance LockAI's security, usability, and scalability.
       </Typography>
       <List className="future-list">
         {future.map((item, idx) => (

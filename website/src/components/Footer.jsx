@@ -26,7 +26,8 @@ export default function Footer() {
           </Tooltip>
         </Stack>
         <Typography variant="caption" className="footer-caption">
-          Educational & non-commercial use only &nbsp;|&nbsp; &copy; 2024 LockAI Team
+          Project report: "An AI and IoT-Driven Knock-and-Touch Access System for Secure Smart Environments"<br/>
+          RV College of Engineering, 2024 &nbsp;|&nbsp; Educational & non-commercial use only &nbsp;|&nbsp; &copy; 2024 LockAI Team
         </Typography>
       </Box>
     </Box>
