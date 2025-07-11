@@ -3,9 +3,9 @@ import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead
 import "./UserFlowSection.css";
 
 const userFlowRows = [
-  { action: "Touch 1 sensor", outcome: "Access granted 2" },
-  { action: "Touch 2 sensors", outcome: "Access denied 2c" },
-  { action: "Tap Blynk switch (V0)", outcome: "Remote unlock 2" },
+  { action: "Touch sensors in your unique knock pattern", outcome: "System authenticates using TinyML and unlocks if authorized (Green LED, Servo unlock)" },
+  { action: "Incorrect or unauthorized pattern", outcome: "Access denied (Red LED, Servo remains locked)" },
+  { action: "Remote unlock via Blynk app", outcome: "Immediate unlock, with feedback and auto-lock after timeout" },
 ];
 
 export default function UserFlowSection({ id = "userflow" }) {
