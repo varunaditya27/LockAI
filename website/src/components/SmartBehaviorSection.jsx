@@ -3,19 +3,19 @@ import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead
 import "./SmartBehaviorSection.css";
 
 const behaviorRows = [
-  { action: "Touch 1 sensor", outcome: "Access granted ✅ (Door unlocks, Green LED)" },
-  { action: "Touch ≥2 sensors", outcome: "Access denied ❌ (Red LED, Door remains locked)" },
-  { action: "Tap Blynk switch (V0)", outcome: "Remote unlock ✅ (Auto-locks after 3s)" },
+  { action: "Authorized knock pattern (timing + spatial)", outcome: "Access granted (Green LED, Servo unlock, log entry)" },
+  { action: "Unauthorized or incorrect pattern", outcome: "Access denied (Red LED, lock remains, log entry)" },
+  { action: "Remote unlock via Blynk", outcome: "Immediate unlock, auto-lock after timeout, feedback via app and LEDs" },
 ];
 
 export default function SmartBehaviorSection({ id = "smartbehavior" }) {
   return (
     <Box id={id} className="smart-behavior-section-outer section">
       <Typography variant="h4" fontWeight={700} color="primary" gutterBottom align="center">
-        Smart Behavior
+        AI-Driven Smart Behavior
       </Typography>
       <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 3 }}>
-        The system responds to touch and remote commands with clear, intuitive feedback.
+        LockAI uses embedded AI to distinguish between authorized and unauthorized knock patterns, providing instant, multi-modal feedback and robust security against replay and timing attacks.
       </Typography>
       <TableContainer component={MuiPaper} className="smart-behavior-table" elevation={0}>
         <Table>

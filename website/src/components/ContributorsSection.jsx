@@ -1,37 +1,28 @@
 import React from "react";
-import { Box, Typography, Stack, Avatar, Link, Tooltip } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { blue, pink, green, orange } from "@mui/material/colors";
+import { Box, Typography, Stack, Avatar } from "@mui/material";
+import { blue, green, pink, orange } from "@mui/material/colors";
 import "./ContributorsSection.css";
 
 const contributors = [
   {
-    name: "Varun Aditya",
-    img: "/src/assets/varun.jpg",
+    name: "Abhijay M S",
     color: blue[700],
-    desc: "Project lead, firmware, and system integration.",
-    linkedin: "https://www.linkedin.com/in/varunaditya27/"
+    desc: "System design, data collection, and documentation."
   },
   {
-    name: "Shreyas Kamat",
-    img: "/src/assets/shreyas.jpg",
+    name: "Shreyas Nayan Kamat",
     color: green[700],
-    desc: "Touch sensor logic, hardware wiring, and testing.",
-    linkedin: "https://www.linkedin.com/in/shreyas-nayan-kamat/"
+    desc: "Touch sensor logic, hardware integration, and testing."
   },
   {
-    name: "Abhijay MS",
-    img: "/src/assets/abhijay.jpg",
+    name: "Vaibhav V. S.",
     color: pink[500],
-    desc: "Blynk integration, UI/UX, and documentation.",
-    linkedin: "https://www.linkedin.com/in/abhijay-ms/"
+    desc: "Servo control, feedback mechanisms, and code optimization."
   },
   {
-    name: "Vaibhav VS",
-    img: "/src/assets/vaibhav.jpg",
+    name: "Varun Aditya",
     color: orange[700],
-    desc: "Servo control, LED feedback, and code optimization.",
-    linkedin: "https://www.linkedin.com/in/vaibhav-vs/"
+    desc: "Firmware, system integration, and project coordination."
   }
 ];
 
@@ -44,19 +35,11 @@ export default function ContributorsSection({ id = "contributors" }) {
       <Stack direction="row" className="contributors-grid">
         {contributors.map((c, idx) => (
           <Box key={idx} className="contributor-item">
-            <Avatar
-              src={c.img}
-              alt={c.name}
-              className="contributor-avatar"
-              sx={{ bgcolor: c.color }}
-            />
+            <Avatar className="contributor-avatar" sx={{ bgcolor: c.color }}>
+              {c.name.split(' ').map(n => n[0]).join('')}
+            </Avatar>
             <Typography variant="h6" className="contributor-name" style={{ color: '#eaf6fb' }}>{c.name}</Typography>
             <Typography variant="body2" className="contributor-desc" style={{ color: '#b0c4d4' }}>{c.desc}</Typography>
-            <Tooltip title="LinkedIn">
-              <Link href={c.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn profile of ${c.name}`} className="contributor-linkedin">
-                <LinkedInIcon sx={{ fontSize: 32 }} />
-              </Link>
-            </Tooltip>
           </Box>
         ))}
       </Stack>
