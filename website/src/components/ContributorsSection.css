@@ -9,6 +9,14 @@
   background: none;
 }
 
+.contributor-name, .contributors-section-outer .MuiTypography-root, .contributors-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.contributor-desc, .contributors-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
+}
+
 .contributors-grid {
   display: flex;
   flex-wrap: wrap;

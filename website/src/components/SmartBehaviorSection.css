@@ -18,10 +18,10 @@
   background: rgba(24, 28, 36, 0.85);
 }
 
-.smart-behavior-table th, .smart-behavior-table td {
+.smart-behavior-table th, .smart-behavior-table td, .smart-behavior-section-outer .MuiTypography-root, .smart-behavior-section-outer .MuiListItemText-primary {
   font-size: 1rem;
   padding: 0.75rem 1rem;
-  color: #eaf6fb;
+  color: #fff !important;
   background: none;
   border-bottom: 1px solid rgba(67,206,162,0.13);
 }
@@ -34,6 +34,10 @@
 
 .smart-behavior-table tr:last-child td {
   border-bottom: none;
+}
+
+.smart-behavior-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
 }
 
 @media (max-width: 700px) {

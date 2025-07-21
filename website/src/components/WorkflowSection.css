@@ -9,6 +9,14 @@
   background: none;
 }
 
+.workflow-section-outer, .workflow-section-outer .MuiTypography-root, .workflow-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.workflow-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
+}
+
 .workflow-list {
   max-width: 600px;
   margin: 2rem auto 0 auto;

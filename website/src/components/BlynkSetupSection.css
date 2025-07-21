@@ -9,6 +9,14 @@
   background: none;
 }
 
+.blynk-section-outer, .blynk-section-outer .MuiTypography-root, .blynk-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.blynk-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
+}
+
 .blynk-list {
   max-width: 600px;
   margin: 2rem auto 0 auto;
