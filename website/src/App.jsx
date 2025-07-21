@@ -12,6 +12,7 @@ import BlynkSetupSection from "./components/BlynkSetupSection";
 import FutureSection from "./components/FutureSection";
 import ContributorsSection from "./components/ContributorsSection";
 import Footer from "./components/Footer";
+import RemoteAccessSection from "./components/RemoteAccessSection";
 import "./App.css";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
       <Sidebar />
       <main className="main-content">
         <HeroSection id="hero" />
+        <RemoteAccessSection id="remoteaccess" />
         <HardwareSection id="hardware" />
         <RemoteControlSection id="remote" />
         <SmartBehaviorSection id="smartbehavior" />

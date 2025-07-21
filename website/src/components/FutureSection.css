@@ -9,6 +9,14 @@
   background: none;
 }
 
+.future-section-outer, .future-section-outer .MuiTypography-root, .future-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.future-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
+}
+
 .future-list {
   max-width: 600px;
   margin: 2rem auto 0 auto;

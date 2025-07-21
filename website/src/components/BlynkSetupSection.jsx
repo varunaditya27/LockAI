@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import "./BlynkSetupSection.css";
 
 export default function BlynkSetupSection({ id = "blynk" }) {
@@ -9,16 +9,16 @@ export default function BlynkSetupSection({ id = "blynk" }) {
         Blynk Mobile Dashboard
       </Typography>
       <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 2 }}>
-        The Blynk app provides a user-friendly interface for remote unlocking, monitoring, and feedback. Set up a Switch widget (Virtual Pin V0) to control the lock, and view real-time status updates and logs.
+        The Blynk app provides a simple dashboard for remote control and monitoring of your LockAI device. The dashboard includes:
       </Typography>
-      <List className="blynk-list">
-        <ListItem>
-          <ListItemText
-            primary={<span style={{ color: '#eaf6fb' }}>Add a Switch widget (V0) in Blynk</span>}
-            secondary={<span style={{ color: '#b0c4d4' }}>Label it 'Remote Unlock' and monitor access logs in the app</span>}
-          />
-        </ListItem>
-      </List>
+      <ul style={{ color: '#fff', fontSize: '1.08rem', maxWidth: 500, margin: '0 auto 2rem auto', paddingLeft: 24 }}>
+        <li>Door Control (lock/unlock switch)</li>
+        <li>Auto-Lock Timer (enable/disable switch)</li>
+        <li>System Status (shows lock state and WiFi status)</li>
+      </ul>
+      <Typography variant="body2" color="text.secondary" align="center">
+        For detailed setup instructions and advanced features, please refer to the GitHub repository.
+      </Typography>
     </Box>
   );
 }

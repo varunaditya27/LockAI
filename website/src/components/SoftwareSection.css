@@ -32,10 +32,12 @@
   box-shadow: 0 2px 12px 0 rgba(67, 206, 162, 0.10);
 }
 
-.software-label {
-  font-size: 1rem;
-  color: #333;
-  text-align: center;
+.software-label, .software-section-outer .MuiTypography-root, .software-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.software-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
 }
 
 @media (max-width: 700px) {

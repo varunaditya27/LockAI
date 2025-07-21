@@ -32,11 +32,12 @@
   box-shadow: 0 2px 12px 0 rgba(67, 206, 162, 0.10);
 }
 
-.remote-label {
-  font-size: 1rem;
-  color: #eaf6fb;
-  text-align: center;
-  font-weight: 500;
+.remote-label, .remote-section-outer .MuiTypography-root, .remote-section-outer .MuiListItemText-primary {
+  color: #fff !important;
+}
+
+.remote-section-outer .MuiListItemText-secondary {
+  color: #e0e0e0 !important;
 }
 
 .remote-desc {

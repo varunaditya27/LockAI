@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
-  color: #f8fafc;
+  color: #fff;
   background-color: #181c24;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,6 +26,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: none;
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,6 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
   letter-spacing: 0.01em;
   text-shadow: 0 2px 12px #185a9d33, 0 0 8px #43cea244;
+  color: #fff;
 }
 
 button {

@@ -37,6 +37,7 @@ const int SERVO_OPEN_ANGLE   = 180;  // Angle for unlocked position
 
 String lastStatusMessage = "";
 unsigned long lastStatusTime = 0;
+bool forceStatusUpdate = false;  // NEW: Force status update flag
 
 // Timing and Behavior Constants
 const unsigned long BUFFER_WINDOW_MS = 200;
@@ -45,7 +46,7 @@ const unsigned long POLL_DELAY_MS   = 20;
 
 // Security features
 unsigned long lockTimer = 0;
-const unsigned long AUTO_LOCK_DELAY = 5000;  // Auto-lock after 10 seconds
+const unsigned long AUTO_LOCK_DELAY = 6000;  // Auto-lock after 6 seconds
 bool autoLockEnabled = true;
 bool isDoorLocked = true;  // Initial state: door locked
 
@@ -135,8 +136,8 @@ void setup() {
   digitalWrite(statusLEDPin, isDoorLocked ? LOW : HIGH);
   
   // Setup timers
-  timer.setInterval(1000L, checkAutoLock);     // Check auto-lock every second
-  timer.setInterval(5000L, sendStatus);        // Send status every 5 seconds
+  timer.setInterval(500L, checkAutoLock);     // Check auto-lock every second
+  timer.setInterval(500L, sendStatus);        // CHANGED: Send status every 1 second for better responsiveness
   
   // Sync with Blynk app
   Blynk.syncAll();
@@ -248,12 +249,15 @@ BLYNK_WRITE(V1) {
   // Send confirmation back to app
   Blynk.virtualWrite(V1, autoLockEnabled ? 1 : 0);
   
+  // Force status update
+  forceStatusUpdate = true;
+  
   // Log event for tracking
   String eventMsg = autoLockEnabled ? "Auto-lock enabled" : "Auto-lock disabled";
   Blynk.logEvent("autolock_change", eventMsg);
 }
 
-// New V2 handler for status requests
+// IMPROVED: V2 handler for status requests
 BLYNK_READ(V2) {
   String statusText = generateStatusText();
   Blynk.virtualWrite(V2, statusText);
@@ -261,25 +265,51 @@ BLYNK_READ(V2) {
   Serial.println(statusText);
 }
 
-// Helper function to generate comprehensive status text
+// NEW: Function to immediately update status to Blynk
+void updateBlynkStatus() {
+  if (Blynk.connected()) {
+    // Update V0 (door control switch)
+    Blynk.virtualWrite(V0, isDoorLocked ? 0 : 1);
+    
+    // Update V1 (auto-lock status)
+    Blynk.virtualWrite(V1, autoLockEnabled ? 1 : 0);
+
+    // Update V2 (Status Display) - FORCE update regardless of message change
+    String currentStatus = generateStatusText();
+    
+    // Update internal tracking
+    lastStatusMessage = currentStatus;
+    lastStatusTime = millis();
+    
+    Serial.print("📡 All Blynk pins updated - ");
+    Serial.println(currentStatus);
+  }
+}
+
+// ENHANCED: Better status text generation with more detail
 String generateStatusText() {
   String status = "";
   
-  // Door state
+  // Door state with timestamp
   status += isDoorLocked ? "🔒 LOCKED" : "🔓 UNLOCKED";
+  
+  // Add last change timestamp
+  status += " (" + String(millis() / 1000) + "s)";
   
   // Auto-lock information
   if (!isDoorLocked && autoLockEnabled && lockTimer > 0) {
     unsigned long timeRemaining = AUTO_LOCK_DELAY - (millis() - lockTimer);
     if (timeRemaining > 0) {
-      status += " (Auto-lock: " + String(timeRemaining / 1000) + "s)";
+      status += " | Auto-lock: " + String(timeRemaining / 1000) + "s";
+    } else {
+      status += " | Auto-lock: READY";
     }
   } else if (!autoLockEnabled && !isDoorLocked) {
-    status += " (Auto-lock: OFF)";
+    status += " | Auto-lock: OFF";
   }
   
   // Connection status
-  status += Blynk.connected() ? " • WiFi: OK" : " • WiFi: ERROR";
+  status += Blynk.connected() ? " | WiFi: OK" : " | WiFi: ERROR";
   
   return status;
 }
@@ -289,12 +319,11 @@ BLYNK_CONNECTED() {
   Serial.println("✓ Blynk connected - LockAI ready for remote control");
   Blynk.syncAll();
   
-  // Send current door status
-  Blynk.virtualWrite(V0, isDoorLocked ? 0 : 1);
-  Blynk.virtualWrite(V1, autoLockEnabled ? 1 : 0);
+  // Force immediate status update
+  updateBlynkStatus();
 }
 
-// Door control functions
+// IMPROVED: Door control functions with immediate status updates
 void unlockDoor(String method) {
   if (isDoorLocked) {
     Serial.println("🔓 UNLOCKING DOOR...");
@@ -310,17 +339,19 @@ void unlockDoor(String method) {
     // Visual feedback
     digitalWrite(greenLEDPin, HIGH);
     digitalWrite(statusLEDPin, HIGH);  // Status LED ON when unlocked
+    // IMMEDIATE status update to Blynk
+    updateBlynkStatus();
     delay(1500);
     digitalWrite(greenLEDPin, LOW);
     
     // Start auto-lock timer
     if (autoLockEnabled) {
       lockTimer = millis();
-      Serial.println("⏰ Auto-lock timer started (10 seconds)");
+      Serial.println("⏰ Auto-lock timer started (6 seconds)");
     }
-    
-    // Send status to Blynk
-    Blynk.virtualWrite(V0, 1);  // Switch to ON position
+
+    // IMMEDIATE Blynk updates - send to all relevant pins
+    updateBlynkStatus();
     
     Serial.println("✓ Door unlocked successfully");
   } else {
@@ -349,8 +380,8 @@ void lockDoor(String method) {
     // Reset auto-lock timer
     lockTimer = 0;
     
-    // Send status to Blynk
-    Blynk.virtualWrite(V0, 0);  // Switch to OFF position
+    // IMMEDIATE status update to Blynk
+    updateBlynkStatus();
     
     Serial.println("✓ Door locked successfully");
   } else {
@@ -358,31 +389,36 @@ void lockDoor(String method) {
   }
 }
 
-// Timer functions
+// IMPROVED: Timer functions with better status tracking
 void checkAutoLock() {
   if (!isDoorLocked && autoLockEnabled && lockTimer > 0) {
-    if (millis() - lockTimer >= AUTO_LOCK_DELAY) {
+    unsigned long elapsed = millis() - lockTimer;
+    if (elapsed >= AUTO_LOCK_DELAY) {
       Serial.println("⏰ Auto-lock timer expired - locking door");
       lockDoor("Auto-lock Timer");
     }
   }
 }
 
+// IMPROVED: Enhanced sendStatus function
 void sendStatus() {
   if (Blynk.connected()) {
-    // Send current door status to V0
-    Blynk.virtualWrite(V0, isDoorLocked ? 0 : 1);
-    
-    // Send detailed status to V2
     String currentStatus = generateStatusText();
-    if (currentStatus != lastStatusMessage) {
+    
+    // Send status if it changed OR if forced update is requested
+    if (currentStatus != lastStatusMessage || forceStatusUpdate) {
+      // Update all relevant virtual pins
+      Blynk.virtualWrite(V0, isDoorLocked ? 0 : 1);
+      Blynk.virtualWrite(V1, autoLockEnabled ? 1 : 0);
       Blynk.virtualWrite(V2, currentStatus);
+      
       lastStatusMessage = currentStatus;
       lastStatusTime = millis();
+      forceStatusUpdate = false;  // Reset force flag
+      
+      Serial.print("📡 Status sent - ");
+      Serial.println(currentStatus);
     }
-    
-    Serial.print("📡 Status sent - ");
-    Serial.println(currentStatus);
   }
 }
 
@@ -539,6 +575,7 @@ void printSystemInfo() {
   Serial.println("\n--- Blynk Configuration ---");
   Serial.println("Virtual Pin V0: Door Control Switch");
   Serial.println("Virtual Pin V1: Auto-lock Enable/Disable");
+  Serial.println("Virtual Pin V2: Status Display (Auto-updating)");
   Serial.println("Switch ON (1) = UNLOCK");
   Serial.println("Switch OFF (0) = LOCK");
   
