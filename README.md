@@ -41,17 +41,6 @@ LockAI is a smart access control system that combines **knock pattern recognitio
 
 ---
 
-## 🎯 Use Case
-
-This system can be used for:
-
-* Personal lockers and drawers
-* Academic exam material storage
-* Smart workspace access
-* Low-cost smart surveillance for small labs or offices
-
----
-
 ## 🧠 System Architecture
 
 ```
@@ -186,5 +175,20 @@ This project is released under the MIT License.
 * Abhijay M. S.
 * Shreyas Nayan Kamat
 * Vaibhav V. S.
+
+---
+
+## 📷 Screenshots (Add later)
+
+* Circuit Diagram
+* Blynk UI
+* Firebase Log Snapshot
+* Final Prototype Image
+
+---
+
+## 🔗 Live Demo / Video (Optional)
+
+[Insert YouTube link or demo video here once available]
 
 ---
