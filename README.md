@@ -32,8 +32,8 @@ LockAI is a smart access control system that combines **knock pattern recognitio
 | --------------- | ------------------------------------- |
 | Microcontroller | ESP32 DevKit v1                       |
 | ML Inference    | TinyML (Edge Impulse)                 |
-| Sensors         | Analog Mic, Capacitive Touch (TTP223) |
-| Output          | Servo Motor, Buzzer, LEDs             |
+| Sensors         | Capacitive Touch (TTP223) |
+| Output          | Servo Motor, LEDs             |
 | IoT Backend     | Firebase Realtime Database            |
 | Mobile App      | Blynk IoT Platform                    |
 | IDE             | Arduino IDE                           |
