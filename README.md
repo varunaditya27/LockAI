@@ -55,13 +55,13 @@ The project operates in two main modes: **Data Collection** and **Smart Lock Ope
 
 ```mermaid
 graph TD
-    A[User Touch] --> B[ESP32 with knock_logger.ino]
-    B --> C[Serial Port (JSON Output)]
-    C --> D[Python: serial_data_logger.py]
-    D --> E[knock_patterns.jsonl]
-    E --> F[Python: jsonl_to_csv.py]
-    F --> G[knock_patterns.csv]
-    G --> H[ML Training (Edge Impulse)]
+    A[User Touch] --> B[ESP32 with knock_logger.ino];
+    B --> C[Serial Port (JSON Output)];
+    C --> D[Python: serial_data_logger.py];
+    D --> E[knock_patterns.jsonl];
+    E --> F[Python: jsonl_to_csv.py];
+    F --> G[knock_patterns.csv];
+    G --> H[ML Training (Edge Impulse)];
 ```
 
 ### 2. Smart Lock Operation Workflow
