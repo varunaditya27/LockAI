@@ -11,15 +11,15 @@ const userFlowRows = [
 export default function UserFlowSection({ id = "userflow" }) {
   return (
     <Box id={id} className="userflow-section-outer section">
-      <Typography variant="h4" fontWeight={700} color="primary" gutterBottom align="center">
+      <Typography variant="h5" fontWeight={700} color="primary" gutterBottom align="center">
         User Interaction Flow
       </Typography>
       <TableContainer className="userflow-table">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="center" sx={{ fontWeight: 700, color: '#eaf6fb', background: 'none' }}>Action</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 700, color: '#eaf6fb', background: 'none' }}>Outcome</TableCell>
+              <TableCell align="center" sx={{ fontWeight: 200, color: '#eaf6fb', background: '#2c5364' }}>Action</TableCell>
+              <TableCell align="center" sx={{ fontWeight: 7000, color: '#eaf6fb', background: '#2c5364' }}>Outcome</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

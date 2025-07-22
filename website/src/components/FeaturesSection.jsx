@@ -19,7 +19,7 @@ const features = [
 export default function FeaturesSection({ id = "features" }) {
   return (
     <Box id={id} className="features-section-outer section">
-      <Typography variant="h4" fontWeight={700} color="primary" gutterBottom align="center">
+      <Typography variant="h5" fontWeight={700} color="primary" gutterBottom align="center">
         Key Features & Objectives
       </Typography>
       <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 2 }}>
