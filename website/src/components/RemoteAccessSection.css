@@ -1,0 +1,62 @@
+.remote-access-section {
+  background: rgba(20, 40, 60, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+  padding: 48px 24px 32px 24px;
+  margin-bottom: 32px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.remote-access-section .MuiTypography-h4 {
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.remote-access-section .MuiTypography-body1 {
+  font-size: 1.15rem;
+  margin-bottom: 24px;
+}
+
+.remote-access-section .MuiAvatar-root {
+  width: 56px;
+  height: 56px;
+  font-size: 2rem;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+
+.remote-access-section .MuiList-root {
+  background: none;
+  border-radius: 12px;
+  padding: 0;
+}
+
+.remote-access-section .MuiListItem-root {
+  margin-bottom: 10px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+}
+
+.remote-access-section .MuiListItemText-primary {
+  color: #fff;
+  font-size: 1.08rem;
+}
+
+.remote-access-section .MuiListItemText-secondary {
+  color: #e0e0e0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 600px) {
+  .remote-access-section {
+    padding: 24px 6px 18px 6px;
+  }
+  .remote-access-section .MuiAvatar-root {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+} 
