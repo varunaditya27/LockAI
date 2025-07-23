@@ -1,0 +1,8 @@
+*node_modules
+*.c
+*.h
+*.cc
+*.xml
+*.iml
+*.cpp
+*.hpp
